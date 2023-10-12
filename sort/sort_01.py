@@ -4,6 +4,8 @@ class City:
     self.x, self.y = x, y
   def __repr__(self):
     return '%s(%3d,%3d)' % (self.name, self.x, self.y)
+  def __lt__(self,other):
+    return self.name < other.name
 
 cities = [
   City("Clean", 1336, 536),  City("Prosy", 977, 860),
@@ -22,9 +24,13 @@ print("--- Original Data ---")
 print(cities)
 
 # sort here by name
+# cities.sort()
+cities.sort()
 print("--- By Name ---")
 print(cities)
 
 # sort here by x
+
+cities.sort(key=lambda c: c.x)
 print("--- By X Coordinate ---")
 print(cities)

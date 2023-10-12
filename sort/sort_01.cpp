@@ -14,6 +14,9 @@ public:
     os << name << '(' << x << ',' << y << ')';
     return os;
   }
+  bool operator<(const City &other){
+    return this->name < other.name;
+  }
 };
 ostream &operator <<(ostream &os, const City &c) {
   return c.print(os);
@@ -32,6 +35,10 @@ City cities[] = {
     City("Tweet", 1253, 403), City("Zilch", 1289, 29),  City("React", 296, 659),  City("Fiche", 787, 278),
 };
 
+bool City_compar_y(const City &c1, const City &c2){
+  return c1.y < c2.y;
+}
+
 int main(void) 
 {
   int n_cities = sizeof(cities) / sizeof(cities[0]);
@@ -40,10 +47,12 @@ int main(void)
   printCities(cities, n_cities);
 
   // sort here by name
+  sort(cities, cities + n_cities);
   cout << "--- By Name ---" << endl;
   printCities(cities, n_cities);
 
   // sort here by y coordinate
+  sort(cities, cities + n_cities, City_compar_y);
   cout << "--- By Y Coordinate ---" << endl;
   printCities(cities, n_cities);
 

@@ -1,5 +1,15 @@
-#include <stdio.h>
+/******************************************************************************
 
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 typedef struct {
   const char *name;
   int x, y;
@@ -26,6 +36,20 @@ void City_printAll(City *p, int count)
   putchar('\n');
 }
 
+
+int City_compare_name(const void *a, const void *b){
+    City *c1 = (City *)a;
+    City *c2 = (City *)b;
+    return strcmp(c1->name, c2->name);
+}
+
+int City_compare_y(const void *a, const void *b){
+    City *cl = (City *)a;
+    City *c2 = (City *)b;
+    
+    return c1->y - c2->y;
+}
+
 int main(void) 
 {
   printf("--- Original Data ---\n");
@@ -36,6 +60,11 @@ int main(void)
   City_printAll(cities, sizeof(cities) / sizeof(cities[0]));
 
   // sort here by y coordinate
+  qsort(cities,
+        sizeof(cities)/ sizeof(cities[0]), 
+        sizeof(cities[0]), 
+        City_compare_name
+        );
   printf("--- By Y Coordinate ---\n");
   City_printAll(cities, sizeof(cities) / sizeof(cities[0]));
 

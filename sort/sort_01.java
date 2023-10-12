@@ -3,9 +3,11 @@
 //   https://www.onlinegdb.com/
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Comparable;
 
 public class Main {
-  public static class City {
+  public static class City implements Comparable<City> {
     String name; int x, y;
     public City(String name, int x, int y) {
       this.name = name;
@@ -14,6 +16,9 @@ public class Main {
     }
     public String toString() {
       return name+'('+x+','+y+')';
+    }
+    public int compareTo(City other){
+      return this.name.compareTo(other.name);
     }
   }
   static City[] cities = new City[] {
@@ -33,10 +38,16 @@ public class Main {
     System.out.println(Arrays.toString(cities));
 
     // sort here by name
+    Arrays.sort(cities);
     System.out.println("--- By Name ---");
     System.out.println(Arrays.toString(cities));
 
     // sort here by x coordinate
+    Arrays.sort(cities, new Comparator<City>(){
+      public int compare(City c1, City c2){
+        return c1.x - c2.x;
+      }
+    });
     System.out.println("--- By X Coordinate ---");
     System.out.println(Arrays.toString(cities));
   }

@@ -24,9 +24,17 @@ console.log("--- Original Data ---")
 console.log(cities)
 
 // sort here by name
+
+cities.sort((a,b)=>{
+  return a.name - b.naem
+})
 console.log("--- By Name ---")
 console.log(cities)
 
+
 // sort here by x
+cities.sort((a,b)=>{
+  return a.x - b.x
+})
 console.log("--- By X Coordinate ---")
 console.log(cities)
