@@ -28,7 +28,7 @@ words = [
     'tawny', 'swede', 'shier', 'satan', 'triad', 'splay', 'tacit',
 
 ]
-l_arr = len(words)
+l_arr = 125
 print(words)
 
 

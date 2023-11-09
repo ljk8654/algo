@@ -42,11 +42,11 @@ def partition(arr, beg, end): # end: exclusive
             p += 1
             # if p >= end: break Q만 비교하면 됨
             if p >= q: break
-            if arr[p] > pv: break
+            if arr[p] < pv: break
         while True: #q 감소:
             q -= 1
             if p > q: break
-            if arr[q] <= pv: break
+            if arr[q] >= pv: break
         if p >= q: break
         arr[p], arr[q] = arr[q], arr[p] #@p <=> @q
     arr[q], arr[beg] = arr[beg], arr[q]
